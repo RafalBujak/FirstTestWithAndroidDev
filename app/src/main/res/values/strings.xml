@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My Test Application</string>
     <string name="hello_world">Hello World</string>
-    <string name="kliknij_mnie">Kliknij mnie</string>
+    <string name="Przejdz_do_nastepnego">Przejdz do nastepnego</string>
     <string name="zmienilem_text">Zmienilem text</string>
+    <string name="Powroc">Powróć</string>
 </resources>

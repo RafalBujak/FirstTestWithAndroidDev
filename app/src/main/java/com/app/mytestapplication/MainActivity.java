@@ -1,6 +1,8 @@
 package com.app.mytestapplication;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    TextView helloText;
+
     Button buttonClick;
 
     @Override
@@ -18,11 +20,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        helloText = findViewById(R.id.helloText);
-        helloText.setText("Jestem zmieniony");
-
         buttonClick = findViewById(R.id.buttonClick);
-        buttonClick.setText(R.string.zmienilem_text);
         buttonClick.setOnClickListener(this);
     }
 
@@ -33,6 +31,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(this, "Kliknieto mnie!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Toast.makeText(this, data.getStringExtra("someData"), Toast.LENGTH_SHORT).show();
+        }
     }
 }
